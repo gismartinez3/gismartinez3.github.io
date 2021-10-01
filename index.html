@@ -1,0 +1,112 @@
+<!Doctype html>
+<head>
+    <title>
+        Calculator
+    </title>
+    <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css">
+    <style> 
+
+        body {
+                margin: 0;
+                font: 100 14px;
+        }
+        button {
+            width: 50px;
+            padding: 0;
+            height: auto;
+            display: block;
+            border: none;
+            user-select: none;
+            cursor: pointer;
+            background: 0
+        }
+
+        button:active{
+            box-shadow: inset 0px 0px 80px 0px rgba(0,0,0,0.25);
+        }
+
+        #wrapper{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #app{
+
+        }
+
+        .btn-clear {
+            margin-top: 50px;    
+        }
+
+    </style>
+</head>
+<div id="wrapper"></div>
+<body>
+    <section class="calculator">
+        <form>
+            <input type="text" name="" id="" class="screen">
+        </form>
+        <div class ="buttons" align="center">
+
+                <button type = "button" class="btn-clear btn-outline-danger btn-lg" data-num="">C</button>
+                
+                <button type = "button" class="btn btn-outline-warning btn-lg" data-num="/">÷</button>
+        <br>
+                <button type = "button" class="btn btn-outline-primary" data-num="7">7</button>   
+                <button type = "button" class="btn btn-outline-primary" data-num="8">8</button>
+                <button type = "button" class="btn btn-outline-primary" data-num="9">9</button>
+                <button type = "button" class="btn btn-outline-warning btn-lg" data-num="+">+</button>
+               
+        <br>
+                <button type = "button" class="btn btn-outline-primary" data-num="4">4</button>
+                <button type = "button" class="btn btn-outline-primary" data-num="5">5</button>
+                <button type = "button" class="btn btn-outline-primary" data-num="6">6</button>
+                <button type = "button" class="btn btn-outline-warning btn-lg" data-num="-">-</button>
+               
+        <br>
+                <button type = "button" class="btn btn-outline-primary" data-num="1">1</button>
+                <button type = "button" class="btn btn-outline-primary" data-num="2">2</button>
+                <button type = "button" class="btn btn-outline-primary" data-num="3">3</button>
+                <button type = "button" class="btn btn-outline-warning btn-lg" data-num="*">×</button>
+                 
+        <br>
+                <button type = "button" class="btn btn-outline-primary" data-num="0">0</button>
+                <button type = "button" class="btn btn-outline-warning btn-lg" data-num=".">.</button>
+                <button type = "button" class="btn-equal btn-success" data-num="=">=</button>
+
+        </div>
+    </section>
+
+
+<script>
+    (function(){
+        let screen = document.querySelector('.screen')
+        let buttons = document.querySelectorAll('.btn')
+        let clear = document.querySelector(' .btn-clear')
+        let equal = document.querySelector(' .btn-equal')
+
+        buttons.forEach(function(button) {
+            button.addEventListener('click', function(e){
+                let value = e.target.dataset.num;
+                screen.value += value;
+        })
+    });
+
+        equal.addEventListener('click', function(e) {
+            if (screen.value === ''){
+             screen.value = "please enter a value";
+         } else {
+                let answer = eval(screen.value);
+                  screen.value = answer;
+        }
+    })
+
+         clear.addEventListener('click', function(e) {
+         screen.value = '';
+         })
+    })();
+
+</script>
+</body>
